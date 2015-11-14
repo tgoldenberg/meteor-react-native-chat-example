@@ -23,6 +23,9 @@
     font-size: 20px;
   }
 }
+body, html, div {
+  overflow-y: hidden;
+}
 .logout {
   position: fixed;
   top: 25px;
@@ -57,10 +60,10 @@
   font-size: 20px;
   color: white;
 }
-.message-box {
+div.message-box {
   margin-top: 80px;
   margin-bottom: 60px;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: 30px;
   background: #f7f7f7;
 }
@@ -101,6 +104,7 @@
     font-size: 18px;
   }
 }
+
 .message-bubble:after {
   content: '';
   position: absolute;
@@ -126,4 +130,9 @@
 }
 .message-details {
   font-weight: 300;
+}
+
+.mdi-account-box {
+  font-size: 100px;
+  color: blue;
 }

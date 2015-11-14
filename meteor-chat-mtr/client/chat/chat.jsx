@@ -2,7 +2,7 @@ class Message extends React.Component{
   render(){
     return (
       <div className='message-holder'>
-        {/*<i className="mdi mdi-account-box"></i>*/}
+        <i className="mdi mdi-account-box"></i>
         <div className="message-content">
           <div className='message-bubble'>
             <p>{this.props.msg.message}</p>
@@ -37,7 +37,7 @@ class MessageForm extends React.Component{
           })
           .then((msg) => {
             // console.log('msg', message);
-            // this.scrollDown();
+            this.props.scrollDown();
           })
         }
       }}>
@@ -68,12 +68,29 @@ class Header extends React.Component{
   }
 }
 class Chat extends React.Component{
+  componentDidMount(){
+    let height = parseInt($(window).height()) - 130;
+    $('.message-box').css({
+      height: height,
+      overflow: 'auto'
+    });
+    this.scrollDown();
+  }
+  scrollDown(){
+    // TODO: scroll to bottom
+    console.log('THIS', this);
+    let scrollHeight = $('.message-box')[0].scrollHeight;
+    console.log('SCROLL', scrollHeight);
+    $('.message-box').scrollTop(scrollHeight);
+  }
   render(){
     return (
       <div>
         <Header />
-        <MessageBox messages={this.props.messages}/>
-        <MessageForm />
+        <div ref="container" className="container">
+          <MessageBox messages={this.props.messages}/>
+        </div>
+        <MessageForm scrollDown={this.scrollDown}/>
       </div>
     )
   }
