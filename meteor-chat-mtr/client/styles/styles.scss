@@ -1,0 +1,129 @@
+.landing-content {
+  margin-top: 80px;
+}
+.form-control {
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.form-control.message-input {
+  width: 80%;
+  flex: 4;
+  height: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.signup, .login {
+  padding: 20px;
+  flex: 1;
+  flex-direction: 'column';
+  justify-content: center;
+
+  p {
+    font-size: 20px;
+  }
+}
+.logout {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  font-size: 16px;
+  color: white;
+  z-index: 9999;
+}
+#main {
+  margin: 0;
+  padding: 0;
+  width: inherit;
+  position: 'relative';
+  overflow: hidden;
+}
+.container {
+  margin: 0;
+  padding: 0;
+  width: inherit;
+}
+.header {
+  height: 70px;
+  text-align: center;
+  padding: 20px;
+  background: black;
+  position: fixed;
+  top: 0;
+  z-index: 9000;
+  width: 100%;
+}
+.header-title {
+  font-size: 20px;
+  color: white;
+}
+.message-box {
+  margin-top: 80px;
+  margin-bottom: 60px;
+  overflow-y: auto;
+  padding: 30px;
+  background: #f7f7f7;
+}
+.messages-form {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 1000;
+  background: white;
+  width: 100%;
+  border: 1px solid #e6e6e6;
+}
+.message-send {
+  width: 100%;
+  flex: 1;
+  background: red;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.message-holder {
+  display: flex;
+}
+.message-bubble {
+  position: relative;
+  padding: 0px;
+  background: #FFFFFF;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  max-width: 60%;
+  min-width: 100px;
+  padding: 10px;
+  margin-left: 8px;
+  p {
+    font-size: 18px;
+  }
+}
+.message-bubble:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 15px 15px 0;
+  border-color: transparent #FFFFFF;
+  display: block;
+  width: 0;
+  z-index: 1;
+  left: -10px;
+  top: 16px;
+
+}
+
+.messages {
+  background: #f7f7f7;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
+  height: 430px;
+  overflow-y: auto;
+  width: 100%;
+}
+.message-details {
+  font-weight: 300;
+}

@@ -75,9 +75,6 @@ class Landing extends React.Component{
     return (
       <div>
         <div className="landing-content">
-          <div className="mainTitle">
-            <p className="title">Meteor Chat</p>
-          </div>
           {register}
           {login}
         </div>
