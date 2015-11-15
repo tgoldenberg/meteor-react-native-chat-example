@@ -13,7 +13,6 @@ Simple example of live chat through a Meteor server on both iOS and Android with
 
 *** 
 ## Setup 
-****
 
 - first `git clone` the repository locally
 - to run the Meteor app, `cd meteor-chat-mtr`, type `meteor`, and open Chrome to `localhost:3000`
@@ -22,7 +21,6 @@ Simple example of live chat through a Meteor server on both iOS and Android with
 
 *** 
 ## Libraries used
-**** 
 
 #### For Meteor, the following packages were used - to add them to other projects just type `meteor add` + project name in your Meteor app
   - `checks` for server-side data checks
@@ -39,11 +37,10 @@ Simple example of live chat through a Meteor server on both iOS and Android with
 
 **** 
 # Contributing
-**** 
+
 - Feel free to contribute to the project by forking and making a pull request, there are plenty of improvements to be made!
 
 ****
 # Shoutouts
-**** 
 
 - Thanks to Spencer Carli for the `meteor-todos-react-native` repository, which provides a great way of linking Meteor to React Native
