@@ -48,6 +48,9 @@ class MessageForm extends React.Component{
   }
 }
 class MessageBox extends React.Component{
+  componentWillUpdate(){
+    this.props.scrollDown();
+  }
   render(){
     return (
       <div className="message-box">
@@ -76,6 +79,9 @@ class Chat extends React.Component{
     });
     this.scrollDown();
   }
+  componentDidUpdate(){
+    this.scrollDown();
+  }
   scrollDown(){
     // TODO: scroll to bottom
     console.log('THIS', this);
@@ -88,7 +94,7 @@ class Chat extends React.Component{
       <div>
         <Header />
         <div ref="container" className="container">
-          <MessageBox messages={this.props.messages}/>
+          <MessageBox messages={this.props.messages} scrollDown={this.scrollDown}/>
         </div>
         <MessageForm scrollDown={this.scrollDown}/>
       </div>

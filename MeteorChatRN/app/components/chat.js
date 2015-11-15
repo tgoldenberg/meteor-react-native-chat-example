@@ -22,7 +22,7 @@ var BUTTONS = [
   'Logout',
   'Cancel',
 ];
-var CANCEL_INDEX = 4;
+var CANCEL_INDEX = 1;
 
 class Chat extends React.Component{
   constructor(props) {
@@ -34,7 +34,7 @@ class Chat extends React.Component{
     }
   }
   componentDidMount(){
-    this.refs.scrollView.scrollTo(0);
+    this.refs.invertible.scrollTo(0);
   }
   showActionSheet(){
     let self = this;
@@ -44,7 +44,6 @@ class Chat extends React.Component{
     },
     (buttonIndex) => {
       if (buttonIndex == 0) {
-        console.log('LOG OUT NOW');
         ddp.logout();
         self.props.navigator.push({
           name: 'Signup'
@@ -59,15 +58,14 @@ class Chat extends React.Component{
         let messagesObserver = ddp.collections.observe(() => {
           let messages = [];
           if (ddp.collections.messages) {
-            // console.log('COLLECTION', ddp.collections.messages.find())
             messages = ddp.collections.messages.find({});
-            // self.setState({messages: messages});
           }
           return messages;
         });
         this.setState({messagesObserver: messagesObserver})
         messagesObserver.subscribe((results) => {
           this.setState({messages: results});
+          this.refs.invertible.scrollTo(0);
         })
       })
   }
@@ -77,8 +75,9 @@ class Chat extends React.Component{
    }
   }
   render(){
+    console.log('SCROLL', this.refs.scrollView);
     let self = this;
-    let titleConfig = { title: 'Chat', tintColor: 'white' };
+    let titleConfig = { title: 'Meteor Chat', tintColor: 'white' };
     var rightButtonConfig = {
       title: 'Profile',
       handler: function onNext() {
@@ -88,7 +87,7 @@ class Chat extends React.Component{
     return (
       <View style={{flex: 1,}}>
         <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor='black'/>
-        <InvertibleScrollView ref='scrollView' style={{flex: .8}}>
+        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: .8}}>
           <MessageBox messages={this.state.messages} />
         </InvertibleScrollView>
         <View style={{flex: .1, backgroundColor: 'white', flexDirection: 'row'}}>
