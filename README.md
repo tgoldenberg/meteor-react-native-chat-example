@@ -31,7 +31,7 @@ Simple example of live chat through a Meteor server on both iOS and Android with
   - `accounts-password` for Meteor's easy-to-use user account management
   
 ### For React Native, the following libraries were used - to add them to other projects in React Native just type `npm install ` + package + `--save`
-  - `react-native-navbar` for a reusable navbar on iOS and Android - note, to enable use on Android, you must comment out references in the library code to `TabBarIOS`
+  - `react-native-navbar` for a reusable navbar on iOS and Android - note, to enable use on Android, you must comment out references in the library code to `TabBarIOS`; this is already done here - see the `index.js` file in the `node_modules/react-native-navbar` directory
   - `react-native-invertible-scroll-view` for easy to implement UI in situations where you want to focus the screen towards the bottom of the `ScrollView`; this is particularly useful for chat applications
   - `ddp-client` for establishing a DDP connection with the remote Meteor server and adding to collections server-side
   - `react-native-vector-icons` for using MaterialIcon fonts as well as other icon fonts; the installation of this package for iOS and Android is distinct, but can easily be implemented through the source project instructions
