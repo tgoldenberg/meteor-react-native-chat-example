@@ -55,7 +55,7 @@ class Register extends React.Component{
                   return ddp.loginWithPassword(this.state.username, this.state.password);
                 })
                 .then((userId) => {
-                  this.props.loggedIn();
+                  this.props.loggedIn(userId);
                 });
             }
           }}>

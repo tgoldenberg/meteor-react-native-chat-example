@@ -3,6 +3,7 @@ const USER_KEY = '@meteorChat:userKey'
 import React from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import ddp from '../config/ddp';
+import MessageBox from './messageBox';
 
 var {
   AppRegistry,
@@ -11,6 +12,7 @@ var {
   View,
   Navigator,
   ActionSheetIOS,
+  ScrollView,
   ActivityIndicatorIOS,
 } = React;
 
@@ -21,6 +23,13 @@ var BUTTONS = [
 var CANCEL_INDEX = 4;
 
 class Chat extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+      messagesObserver: null,
+    }
+  }
   showActionSheet(){
     let self = this;
     ActionSheetIOS.showActionSheetWithOptions({
@@ -31,11 +40,35 @@ class Chat extends React.Component{
       if (buttonIndex == 0) {
         console.log('LOG OUT NOW');
         ddp.logout();
-        self.props.navigator.replacePreviousAndPop({
-          name: 'Signup',
-        })
+        self.props.navigator.push({
+          name: 'Signup'
+        });
       }
     });
+  }
+  componentWillMount(){
+    let self = this;
+    ddp.subscribe('messages', [])
+      .then(() => {
+        let messagesObserver = ddp.collections.observe(() => {
+          let messages = [];
+          if (ddp.collections.messages) {
+            // console.log('COLLECTION', ddp.collections.messages.find())
+            messages = ddp.collections.messages.find({});
+            // self.setState({messages: messages});
+          }
+          return messages;
+        });
+        this.setState({messagesObserver: messagesObserver})
+        messagesObserver.subscribe((results) => {
+          this.setState({messages: results});
+        })
+      })
+  }
+  componentWillUnmount() {
+   if (this.state.messagesObserver) {
+     this.state.messagesObserver.dispose();
+   }
   }
   render(){
     let self = this;
@@ -43,15 +76,15 @@ class Chat extends React.Component{
     var rightButtonConfig = {
       title: 'Profile',
       handler: function onNext() {
-        // TODO: open bottom to give option of logging out
-        console.log('LOG OUT?')
         self.showActionSheet();
       }
     };
     return (
       <View style={{flex: 1,}}>
         <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor='black'/>
-        <Text>THIS IS THE CHAT SCREEN</Text>
+        <ScrollView>
+          <MessageBox messages={this.state.messages} />
+        </ScrollView>
       </View>
     )
   }

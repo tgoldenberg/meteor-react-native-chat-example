@@ -62,11 +62,13 @@ class MeteorChatRN extends React.Component{
             return (
               <Chat
                 navigator={navigator}
+                userId={this.state.userId}
                 />
             );
           } else if (route.name == 'Signup') {
             return (
               <Signup
+                loggedIn={(userId) => {this.setState({userId: userId})}}
                 navigator={navigator}
                 />
             );

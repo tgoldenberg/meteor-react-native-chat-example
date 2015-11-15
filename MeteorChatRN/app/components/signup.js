@@ -38,9 +38,12 @@ class Signup extends React.Component{
     }
     if (this.state.register) {
       register = <Register
-                  loggedIn= {() => {this.props.navigator.push({
-                    name: 'Chat'
-                  })}}
+                  loggedIn= {(userId) => {
+                    this.props.loggedIn(userId)
+                    this.props.navigator.push({
+                      name: 'Chat'
+                    })
+                  }}
                   switch={() => {this.setState({register: false, login: true})}}/>
     }
 
