@@ -44,4 +44,4 @@ Simple example of live chat through a Meteor server on both iOS and Android with
 ****
 # Shoutouts
 
-- Thanks to Spencer Carli for the `meteor-todos-react-native` repository, which provides a great way of linking Meteor to React Native
+- Thanks to [Spencer Carli](https://github.com/spencercarli) for the [`meteor-todos-react-native`](https://github.com/spencercarli/meteor-todos-react-native) repository, which provides a great way of linking Meteor to React Native
