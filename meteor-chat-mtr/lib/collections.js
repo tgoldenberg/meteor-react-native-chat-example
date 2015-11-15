@@ -9,6 +9,7 @@ Messages.allow({
 Meteor.methods({
   messageCreate: function(messageAttributes) {
     // check(this.userId, String);
+    console.log('MESSAGE CREATE');
     check(messageAttributes, {
       message: String,
       author: String,

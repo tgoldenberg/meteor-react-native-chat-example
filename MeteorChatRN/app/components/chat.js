@@ -4,7 +4,7 @@ import React from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import ddp from '../config/ddp';
 import MessageBox from './messageBox';
-
+import InvertibleScrollView from 'react-native-invertible-scroll-view';
 var {
   AppRegistry,
   StyleSheet,
@@ -12,6 +12,8 @@ var {
   View,
   Navigator,
   ActionSheetIOS,
+  TextInput,
+  TouchableHighlight,
   ScrollView,
   ActivityIndicatorIOS,
 } = React;
@@ -28,7 +30,11 @@ class Chat extends React.Component{
     this.state = {
       messages: [],
       messagesObserver: null,
+      newMessage: '',
     }
+  }
+  componentDidMount(){
+    this.refs.scrollView.scrollTo(0);
   }
   showActionSheet(){
     let self = this;
@@ -72,7 +78,7 @@ class Chat extends React.Component{
   }
   render(){
     let self = this;
-    let titleConfig = { title: 'Signup', tintColor: 'white' };
+    let titleConfig = { title: 'Chat', tintColor: 'white' };
     var rightButtonConfig = {
       title: 'Profile',
       handler: function onNext() {
@@ -82,12 +88,65 @@ class Chat extends React.Component{
     return (
       <View style={{flex: 1,}}>
         <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor='black'/>
-        <ScrollView>
+        <InvertibleScrollView ref='scrollView' style={{flex: .8}}>
           <MessageBox messages={this.state.messages} />
-        </ScrollView>
+        </InvertibleScrollView>
+        <View style={{flex: .1, backgroundColor: 'white', flexDirection: 'row'}}>
+          <TextInput
+            value={this.state.newMessage}
+            placeholder='message'
+            onChange={(e) => {this.setState({newMessage: e.nativeEvent.text}); }}
+            style={styles.input}
+            />
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => {
+              if (this.state.newMessage != '') {
+                let options = {
+                  author: this.props.username,
+                  message: this.state.newMessage,
+                  createdAt: new Date(),
+                  avatarUrl: '',
+                };
+                this.setState({newMessage: ''})
+                ddp.call('messageCreate', [options]);
+              }
+            }}
+            underlayColor='red'>
+            <Text style={styles.buttonText}>SEND</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     )
   }
 };
+
+let styles = StyleSheet.create({
+  input: {
+    height: 50,
+    padding: 4,
+    flex: 1,
+    marginRight: 5,
+    fontSize: 23,
+    borderWidth: 1,
+    margin: 10,
+    borderColor: '#b4b4b4',
+    borderRadius: 8,
+    color: 'black',
+    backgroundColor: 'white',
+  },
+  button: {
+    flex: .4,
+    backgroundColor: 'red',
+    borderRadius: 6,
+    justifyContent: 'center',
+    margin: 10,
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 16,
+  },
+})
 
 module.exports = Chat;

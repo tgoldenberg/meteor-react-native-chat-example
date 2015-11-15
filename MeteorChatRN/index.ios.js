@@ -26,6 +26,7 @@ class MeteorChatRN extends React.Component{
     this.state = {
       initialRoute: '',
       loggedIn: false,
+      username: '',
     }
   }
   componentWillMount() {
@@ -40,8 +41,10 @@ class MeteorChatRN extends React.Component{
           loggedIn: false
         };
         if (res.loggedIn === true) {
+          console.log('RES', res);
           state.loggedIn = true;
           state.userId = res.userId;
+          state.username = res.username;
           state.initialRoute = 'Chat';
         } else {
           state.initialRoute = 'Signup';
@@ -50,19 +53,25 @@ class MeteorChatRN extends React.Component{
       });
   }
   render() {
-    console.log('FLUSH');
     if (this.state.initialRoute == '') {
-      return <View style={{flex: 1}}></View>
+      return (
+        <View style={{flex: 1}}>
+          <ActivityIndicatorIOS />
+        </View>
+      )
+
     }
     return (
       <Navigator style={{flex: 1}}
         initialRoute={{name: this.state.initialRoute}}
         renderScene={(route, navigator) => {
+          console.log('ROUTE', route);
           if (route.name == 'Chat') {
             return (
               <Chat
                 navigator={navigator}
                 userId={this.state.userId}
+                username={this.state.username}
                 />
             );
           } else if (route.name == 'Signup') {

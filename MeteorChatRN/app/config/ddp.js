@@ -103,13 +103,17 @@ ddp.loginWithToken = function() {
               AsyncStorage.setItem('userId', res.id)
               AsyncStorage.setItem('loginToken', res.token);
               AsyncStorage.setItem('loginTokenExpires', res.tokenExpires);
+              AsyncStorage.getItem('username')
+              .then(function(username) {
+                obj = {
+                  loggedIn: true,
+                  userId: res.id,
+                  username: username
+                };
 
-              obj = {
-                loggedIn: true,
-                userId: res.id
-              };
+                resolve(obj);
+              });
 
-              resolve(obj);
             } else {
               resolve(obj);
             }
@@ -142,6 +146,7 @@ ddp.loginWithPassword = function(username, password) {
       if (res) {
         console.log('sucess!');
         AsyncStorage.setItem('userId', res.id)
+        AsyncStorage.setItem('username', username);
         AsyncStorage.setItem('loginToken', res.token);
         AsyncStorage.setItem('loginTokenExpires', res.tokenExpires);
 
