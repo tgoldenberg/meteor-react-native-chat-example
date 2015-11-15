@@ -3,13 +3,14 @@ Simple example of live chat through a Meteor server on both iOS and Android with
 
 ***
 #Screenshots
-**** 
+
 ## Example with iOS
 
 <image src="https://raw.githubusercontent.com/tgoldenberg/meteor-react-native-chat-example/master/meteor-chat-1.png" width="200px"/>
 ## Example with Android
 
 <image src="https://raw.githubusercontent.com/tgoldenberg/meteor-react-native-chat-example/master/meteor-chat-2.png" width="200px"/>
+
 *** 
 ## Setup 
 ****
