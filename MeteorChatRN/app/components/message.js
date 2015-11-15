@@ -13,7 +13,6 @@ let {
   TouchableHighlight,
   View,
   Navigator,
-  ActivityIndicatorIOS,
 } = React;
 
 class Message extends React.Component{
@@ -29,7 +28,6 @@ class Message extends React.Component{
             <Text style={styles.author}>by {this.props.msg.author}</Text>
             <Text style={styles.sent}>sent on {this.props.msg.createdAt.toLocaleDateString()}</Text>
           </View>
-
         </View>
         <View style={styles.separator}></View>
       </View>

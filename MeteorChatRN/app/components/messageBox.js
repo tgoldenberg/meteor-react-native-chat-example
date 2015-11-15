@@ -12,7 +12,6 @@ let {
   TouchableHighlight,
   View,
   Navigator,
-  ActivityIndicatorIOS,
 } = React;
 
 class MessageBox extends React.Component{

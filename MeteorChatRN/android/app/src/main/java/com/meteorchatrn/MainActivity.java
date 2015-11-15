@@ -1,5 +1,6 @@
 package com.meteorchatrn;
 
+import com.oblador.vectoricons.VectorIconsPackage;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -26,6 +27,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
+                .addPackage(new VectorIconsPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

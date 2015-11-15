@@ -4,8 +4,8 @@
  */
  const USER_KEY = '@meteorChat:userKey'
  import React from 'react-native';
- import Chat from './app/components/chat';
- import Signup from './app/components/signup';
+ import ChatAndroid from './app/components/chatAndroid';
+ import SignupAndroid from './app/components/signupAndroid';
  import ddp from './app/config/ddp';
  var {
    AppRegistry,
@@ -45,9 +45,9 @@ global.process.nextTick = setImmediate;
            state.loggedIn = true;
            state.userId = res.userId;
            state.username = res.username;
-           state.initialRoute = 'Chat';
+           state.initialRoute = 'ChatAndroid';
          } else {
-           state.initialRoute = 'Signup';
+           state.initialRoute = 'SignupAndroid';
          }
          this.setState(state);
        });
@@ -65,17 +65,17 @@ global.process.nextTick = setImmediate;
        <Navigator style={{flex: 1}}
          initialRoute={{name: this.state.initialRoute}}
          renderScene={(route, navigator) => {
-           if (route.name == 'Chat') {
+           if (route.name == 'ChatAndroid') {
              return (
-               <Chat
+               <ChatAndroid
                  navigator={navigator}
                  userId={this.state.userId}
                  username={this.state.username}
                  />
              );
-           } else if (route.name == 'Signup') {
+           } else if (route.name == 'SignupAndroid') {
              return (
-               <Signup
+               <SignupAndroid
                  loggedIn={(userId) => {this.setState({userId: userId})}}
                  navigator={navigator}
                  />
