@@ -3,33 +3,79 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
-
-var React = require('react-native');
+const USER_KEY = '@meteorChat:userKey'
+import React from 'react-native';
+import Chat from './app/components/chat';
+import Signup from './app/components/signup';
+import ddp from './app/config/ddp';
 var {
   AppRegistry,
   StyleSheet,
   Text,
   View,
+  Navigator,
+  AsyncStorage,
+  ActivityIndicatorIOS,
 } = React;
 
-var MeteorChatRN = React.createClass({
-  render: function() {
+global.process = require("./app/config/process.polyfill");
+
+class MeteorChatRN extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      initialRoute: '',
+      loggedIn: false,
+    }
+  }
+  componentWillMount() {
+    let self = this;
+    ddp.initialize()
+      .then(() => {
+        return ddp.loginWithToken();
+      })
+      .then((res) => {
+        let state = {
+          connected: true,
+          loggedIn: false
+        };
+        if (res.loggedIn === true) {
+          state.loggedIn = true;
+          state.userId = res.userId;
+          state.initialRoute = 'Chat';
+        } else {
+          state.initialRoute = 'Signup';
+        }
+        this.setState(state);
+      });
+  }
+  render() {
+    console.log('FLUSH');
+    if (this.state.initialRoute == '') {
+      return <View style={{flex: 1}}></View>
+    }
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Meteor Chat!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Navigator style={{flex: 1}}
+        initialRoute={{name: this.state.initialRoute}}
+        renderScene={(route, navigator) => {
+          if (route.name == 'Chat') {
+            return (
+              <Chat
+                navigator={navigator}
+                />
+            );
+          } else if (route.name == 'Signup') {
+            return (
+              <Signup
+                navigator={navigator}
+                />
+            );
+          }
+        }}
+      />
     );
   }
-});
+};
 
 var styles = StyleSheet.create({
   container: {

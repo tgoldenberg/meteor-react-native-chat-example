@@ -24,5 +24,15 @@ Meteor.methods({
   },
   messageDelete: function(messageId) {
     Messages.remove({_id: messageId});
+  },
+  registerUser: function(username, password) {
+    check(username, String);
+    check(password, String);
+    console.log('USERNAME', username, password);
+    return Accounts.createUser({username: username, password: password});
+  },
+  loginUser: function(username, password) {
+    console.log('LOGGING IN', username, password);
+    return Accounts.loginWithPassword({username: username, password: password})
   }
 })

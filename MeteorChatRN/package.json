@@ -6,6 +6,9 @@
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "react-native": "^0.14.2"
+    "ddp-client": "^0.1.2",
+    "react-native": "^0.14.2",
+    "react-native-navbar": "^1.0.5",
+    "underscore": "^1.8.3"
   }
 }
