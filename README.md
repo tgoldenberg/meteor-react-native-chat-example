@@ -32,8 +32,6 @@ Simple example of live chat through a Meteor server on both iOS and Android with
 **** 
 - Feel free to contribute to the project by forking and making a pull request, there are plenty of improvements to be made!
 
-**** 
-
 ****
 # Shoutouts
 **** 
