@@ -41,7 +41,6 @@ class MeteorChatRN extends React.Component{
           loggedIn: false
         };
         if (res.loggedIn === true) {
-          console.log('RES', res);
           state.loggedIn = true;
           state.userId = res.userId;
           state.username = res.username;
@@ -65,7 +64,6 @@ class MeteorChatRN extends React.Component{
       <Navigator style={{flex: 1}}
         initialRoute={{name: this.state.initialRoute}}
         renderScene={(route, navigator) => {
-          console.log('ROUTE', route);
           if (route.name == 'Chat') {
             return (
               <Chat

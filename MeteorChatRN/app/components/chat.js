@@ -75,7 +75,6 @@ class Chat extends React.Component{
    }
   }
   render(){
-    console.log('SCROLL', this.refs.scrollView);
     let self = this;
     let titleConfig = { title: 'Meteor Chat', tintColor: 'white' };
     var rightButtonConfig = {

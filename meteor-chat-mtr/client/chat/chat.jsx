@@ -83,10 +83,7 @@ class Chat extends React.Component{
     this.scrollDown();
   }
   scrollDown(){
-    // TODO: scroll to bottom
-    console.log('THIS', this);
     let scrollHeight = $('.message-box')[0].scrollHeight;
-    console.log('SCROLL', scrollHeight);
     $('.message-box').scrollTop(scrollHeight);
   }
   render(){

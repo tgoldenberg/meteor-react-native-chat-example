@@ -11,7 +11,6 @@ let {
   TouchableHighlight,
   View,
   Navigator,
-  ActivityIndicatorIOS,
 } = React;
 
 
@@ -35,7 +34,7 @@ class Login extends React.Component{
           ref='registerUsername'
           placeholder={"username"}
           value={this.state.username}
-          onChange={(e) => {this.setState({username: e.nativeEvent.text})}}
+          onChangeText={(text) => this.setState({username: text})}
           />
         <TextInput
           style={styles.input}
@@ -43,7 +42,7 @@ class Login extends React.Component{
           placeholder="password"
           value={this.state.password}
           secureTextEntry={true}
-          onChange={(e) => {this.setState({password: e.nativeEvent.text})}}
+          onChangeText={(text) => this.setState({password: text})}
           />
         <TouchableHighlight
           underlayColor='green'

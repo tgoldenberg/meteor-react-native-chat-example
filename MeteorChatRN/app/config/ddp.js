@@ -5,7 +5,7 @@ import _ from 'underscore';
 
 let ddpClient = new DDPClient({
   // All properties optional, defaults shown
-  host : "localhost",
+  host : "192.168.1.3",
   port : 3000,
   ssl  : false,
   autoReconnect : true,
@@ -35,7 +35,8 @@ ddp.initialize = function () {
       if (wasReconnect) {
         console.log('Reestablishment of a connection.');
       }
-      console.log('connected!');
+
+      console.log('connected!', ddpClient);
       resolve(true);
     });
   });
@@ -86,6 +87,7 @@ ddp.call = function(methodName, params) {
 
 // Method to login with a saved token
 ddp.loginWithToken = function() {
+  console.log('LOGIN');
   return new Promise(function(resolve, reject) {
     // Check if we have a loginToken in persistent client storage
     AsyncStorage.getItem('loginToken')
