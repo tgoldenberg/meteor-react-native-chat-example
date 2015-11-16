@@ -116,7 +116,7 @@ class Chat extends React.Component{
             style={styles.input}
             />
           <TouchableHighlight
-            style={styles.button}
+            style={this.state.newMessage ? styles.buttonActive : styles.buttonInactive}
             onPress={() => {
               if (this.state.newMessage != '') {
                 let options = {
@@ -141,9 +141,7 @@ class Chat extends React.Component{
 let styles = StyleSheet.create({
   inputBox: {
     height: 60,
-    borderTopWidth: 1,
-    borderTopColor: '#9B9B9B',
-    backgroundColor: '#f8f8f8', 
+    backgroundColor: '#F3EFEF', 
     flexDirection: 'row'
   },
   input: {
@@ -152,16 +150,23 @@ let styles = StyleSheet.create({
     flex: 1,
     marginRight: 5,
     fontSize: 12,
-    borderWidth: 1,
+    borderColor: '#E0E0E0',
     margin: 10,
     borderColor: '#b4b4b4',
     borderRadius: 8,
     color: 'black',
     backgroundColor: 'white',
   },
-  button: {
+  buttonActive: {
     flex: .4,
     backgroundColor: "#E0514B",
+    borderRadius: 6,
+    justifyContent: 'center',
+    margin: 10,
+  },
+  buttonInactive: {
+    flex: .4,
+    backgroundColor: "#eeeeee",
     borderRadius: 6,
     justifyContent: 'center',
     margin: 10,
