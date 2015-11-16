@@ -3,12 +3,14 @@ const USER_KEY = '@meteorChat:userKey'
 import React from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import ddp from '../config/ddp';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import moment from 'moment';
 
 let {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   TextInput,
   TouchableHighlight,
   View,
@@ -17,19 +19,24 @@ let {
 
 class Message extends React.Component{
   render(){
+    console.log('MSG', this.props.msg);
     return (
       <View style={{flex: 1,}} >
         <View style={styles.container}>
-          <Icon name='account-box' size={60} color='blue'/>
+          <Image
+            style={styles.icon}
+            source={require('./meteor-icon.png')}
+          />
           <View style={styles.messageBox}>
+            <View style={styles.row}>
+              <Text style={styles.author}>{this.props.msg.author}</Text>
+              <Text style={styles.sent}>{moment(this.props.createdAt).fromNow()}</Text>
+            </View>
             <View style={styles.messageView}>
               <Text style={styles.messageText}>{this.props.msg.message}</Text>
             </View>
-            <Text style={styles.author}>by {this.props.msg.author}</Text>
-            <Text style={styles.sent}>sent on {this.props.msg.createdAt.toLocaleDateString()}</Text>
           </View>
         </View>
-        <View style={styles.separator}></View>
       </View>
     )
   }
@@ -37,9 +44,9 @@ class Message extends React.Component{
 let styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#f7f7f7',
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    paddingVertical: 10
   },
   separator: {
     flex: 1,
@@ -47,32 +54,62 @@ let styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e6e6e6',
     marginLeft: 10,
-
+  },
+  icon: {
+    height: 40,
+    width: 40,
+    marginTop: 10,
+    marginLeft: 13
   },
   messageBox: {
     flex: 1,
-    alignItems: 'stretch'
+    alignItems: 'stretch',
+    padding: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 2,
   },
   messageView: {
-    borderRadius: 6,
-    backgroundColor: 'white',
-    padding: 10,
-    margin: 5,
     flex: 1,
+    paddingRight: 15,
   },
   messageText: {
-    fontSize: 20,
-    fontWeight: '400',
+    fontSize: 14,
+    fontWeight: '300'
   },
   author:{
+    fontSize: 12,
+    fontWeight: '700',
+    padding: 10
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 3
+  },
+  messageView: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingRight: 15
+  },
+  messageText: {
     fontSize: 14,
     fontWeight: '300',
-    marginLeft: 10,
   },
+  icon: {
+    height: 40,
+    width: 40,
+    marginTop: 10,
+    marginLeft: 15
+ },
   sent:{
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '300',
+    color: '#9B9B9B',
     marginLeft: 10,
+    color: '#9B9B9B',
+    fontWeight: '300',
+    marginLeft: 10
   }
 })
 module.exports = Message;
