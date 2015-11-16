@@ -174,7 +174,7 @@ ddp.logout = function() {
         console.log('err', err);
       } else {
         console.log('delete the tokens');
-        AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']);
+        AsyncStorage.multiRemove(['userId', 'username', 'loginToken', 'loginTokenExpires']);
       }
     });
     resolve(true);

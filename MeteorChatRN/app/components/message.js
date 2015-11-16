@@ -81,7 +81,6 @@ let styles = StyleSheet.create({
   author:{
     fontSize: 12,
     fontWeight: '700',
-    padding: 10
   },
   row: {
     flexDirection: 'row',
