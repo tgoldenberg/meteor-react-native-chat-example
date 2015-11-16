@@ -69,7 +69,6 @@ let styles = StyleSheet.create({
   messageView: {
     flex: 1,
     paddingRight: 15,
-    backgroundColor: 'white',
   },
   messageText: {
     fontSize: 14,
