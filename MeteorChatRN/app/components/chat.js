@@ -126,7 +126,7 @@ let styles = StyleSheet.create({
     padding: 8,
     flex: 1,
     marginRight: 5,
-    fontSize: 23,
+    fontSize: 16,
     borderWidth: 1,
     margin: 10,
     borderColor: '#b4b4b4',
