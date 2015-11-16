@@ -68,6 +68,9 @@ class MeteorChatRN extends React.Component{
             return (
               <Chat
                 navigator={navigator}
+                loggedIn={(userId, username) => {
+                  this.setState({userId: userId, username: username})
+                }}
                 userId={this.state.userId}
                 username={this.state.username}
                 />
@@ -75,7 +78,9 @@ class MeteorChatRN extends React.Component{
           } else if (route.name == 'Signup') {
             return (
               <Signup
-                loggedIn={(userId) => {this.setState({userId: userId})}}
+                loggedIn={(userId, username) => {
+                  this.setState({userId: userId, username: username})
+                }}
                 navigator={navigator}
                 />
             );
