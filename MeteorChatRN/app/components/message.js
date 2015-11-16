@@ -59,11 +59,21 @@ let styles = StyleSheet.create({
     height: 40,
     width: 40,
     marginTop: 10,
+<<<<<<< HEAD
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     marginLeft: 13
+=======
+    marginLeft: 15
+>>>>>>> Adding styling to chat window
+=======
+    marginLeft: 13
+>>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
   },
   messageBox: {
     flex: 1,
     alignItems: 'stretch',
+<<<<<<< HEAD
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     padding: 10,
   },
   row: {
@@ -94,6 +104,46 @@ let styles = StyleSheet.create({
   messageText: {
     fontSize: 14,
     fontWeight: '300',
+=======
+    padding: 10
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 2
+  },
+  messageView: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingRight: 15
+=======
+    padding: 10
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 3
+  },
+  messageView: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingRight: 15
+  },
+  messageText: {
+    fontSize: 14,
+    fontWeight: '300',
+  },
+  author:{
+    fontSize: 12,
+    fontWeight: '700'
+>>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
+  },
+  messageText: {
+    fontSize: 14,
+    fontWeight: '300',
+  },
+  author:{
+    fontSize: 12,
+    fontWeight: '700'
+>>>>>>> Adding styling to chat window
   },
   icon: {
     height: 40,
@@ -103,11 +153,21 @@ let styles = StyleSheet.create({
  },
   sent:{
     fontSize: 12,
+<<<<<<< HEAD
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     fontWeight: '300',
     color: '#9B9B9B',
     marginLeft: 10,
     color: '#9B9B9B',
     fontWeight: '300',
+=======
+    color: '#9B9B9B',
+    fontWeight: '300',
+>>>>>>> Adding styling to chat window
+=======
+    color: '#9B9B9B',
+    fontWeight: '300',
+>>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
     marginLeft: 10
   }
 })
