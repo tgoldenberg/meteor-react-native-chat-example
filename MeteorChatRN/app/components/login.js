@@ -9,6 +9,7 @@ let {
   Text,
   TextInput,
   TouchableHighlight,
+  DeviceEventEmitter,
   View,
   Navigator,
 } = React;
@@ -20,14 +21,28 @@ class Login extends React.Component{
     this.state = {
       username: '',
       password: '',
+      keyboardOffset: 0
     }
+  }
+  _keyboardWillShow(e) {
+      var newCoordinates = e.endCoordinates.height;
+      this.setState({
+          keyboardOffset: newCoordinates
+      })
+  }
+  _keyboardWillHide(e) {
+      this.setState({
+          keyboardOffset: 0
+      })
   }
   componentDidMount(){
     ddp.initialize();
+    _keyboardWillShowSubscription = DeviceEventEmitter.addListener('keyboardWillShow', (e) => this._keyboardWillShow(e));
+    _keyboardWillHideSubscription = DeviceEventEmitter.addListener('keyboardWillHide', (e) => this._keyboardWillHide(e));
   }
   render(){
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {paddingBottom: this.state.keyboardOffset}]}>
         <Text style={styles.title}>Welcome Back!</Text>
         <TextInput
           style={styles.input}
