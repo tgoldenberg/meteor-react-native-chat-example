@@ -155,6 +155,7 @@ ddp.loginWithPassword = function(username, password) {
 
         obj.loggedIn = true;
         obj.userId = res.id;
+        obj.username = username;
 
         resolve(obj);
       } else {
