@@ -129,7 +129,7 @@ class Chat extends React.Component{
                 ddp.call('messageCreate', [options]);
               }
             }}
-            underlayColor='red'>
+            underlayColor='#D97573'>
             <Text style={styles.buttonText}>Send</Text>
           </TouchableHighlight>
         </View>
