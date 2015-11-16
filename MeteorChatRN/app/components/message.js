@@ -70,18 +70,9 @@ let styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingVertical: 10
-  },
-  separator: {
-    flex: 1,
-    height: 2,
-    borderWidth: 1,
-    borderColor: '#e6e6e6',
-    marginLeft: 10,
+    paddingVertical: 10,
   },
   icon: {
-    height: 40,
-    width: 40,
     marginTop: 10,
     marginLeft: 13
   },
@@ -93,22 +84,7 @@ let styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     marginBottom: 2,
-  },
-  messageView: {
-    flex: 1,
-    paddingRight: 15,
-  },
-  messageText: {
-    fontSize: 14,
-    fontWeight: '300'
-  },
-  author:{
-    fontSize: 12,
-    fontWeight: '700',
-  },
-  row: {
-    flexDirection: 'row',
-    marginBottom: 3
+    marginTop: 10
   },
   messageView: {
     backgroundColor: 'white',
@@ -116,51 +92,13 @@ let styles = StyleSheet.create({
     paddingRight: 15
   },
   messageText: {
-    fontSize: 14,
-    fontWeight: '300',
-    padding: 10
-  },
-  row: {
-    flexDirection: 'row',
-    marginBottom: 2
-  },
-  messageView: {
-    backgroundColor: 'white',
-    flex: 1,
-    paddingRight: 15,
-    padding: 10
-  },
-  row: {
-    flexDirection: 'row',
-    marginBottom: 3
-  },
-  messageView: {
-    backgroundColor: 'white',
-    flex: 1,
-    paddingRight: 15
-  },
-  messageText: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '300',
   },
   author:{
     fontSize: 12,
     fontWeight: '700'
   },
-  messageText: {
-    fontSize: 14,
-    fontWeight: '300',
-  },
-  author:{
-    fontSize: 12,
-    fontWeight: '700'
-  },
-  icon: {
-    height: 40,
-    width: 40,
-    marginTop: 10,
-    marginLeft: 15
- },
   sent:{
     fontSize: 12,
     fontWeight: '300',
