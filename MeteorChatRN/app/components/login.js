@@ -8,6 +8,7 @@ let {
   StyleSheet,
   Text,
   TextInput,
+  ScrollView,
   TouchableHighlight,
   DeviceEventEmitter,
   View,
@@ -42,7 +43,7 @@ class Login extends React.Component{
   }
   render(){
     return (
-      <View style={[styles.container, {paddingBottom: this.state.keyboardOffset}]}>
+      <ScrollView style={[styles.container, {paddingBottom: this.state.keyboardOffset}]}>
         <Text style={styles.title}>Welcome Back!</Text>
         <TextInput
           style={styles.input}
@@ -87,7 +88,7 @@ class Login extends React.Component{
           }}>
           <Text style={styles.link}>Don't have an account? Sign up here!</Text>
         </TouchableHighlight>
-      </View>
+      </ScrollView>
     );
   }
 };
