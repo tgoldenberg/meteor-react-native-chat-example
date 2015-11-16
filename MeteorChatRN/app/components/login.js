@@ -48,14 +48,14 @@ class Login extends React.Component{
         <TextInput
           style={styles.input}
           ref='registerUsername'
-          placeholder={"username"}
+          placeholder={"Username"}
           value={this.state.username}
           onChangeText={(text) => this.setState({username: text})}
           />
         <TextInput
           style={styles.input}
           ref='registerPassword'
-          placeholder="password"
+          placeholder="Password"
           value={this.state.password}
           secureTextEntry={true}
           onChangeText={(text) => this.setState({password: text})}
