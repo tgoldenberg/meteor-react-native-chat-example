@@ -27,18 +27,18 @@ class Register extends React.Component{
   render(){
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Signup</Text>
+        <Text style={styles.title}>Welcome to Meteor Chat!</Text>
         <TextInput
           style={styles.input}
           ref='registerUsername'
-          placeholder={"username"}
+          placeholder={"Username"}
           value={this.state.username}
           onChange={(e) => {this.setState({username: e.nativeEvent.text})}}
           />
         <TextInput
           style={styles.input}
           ref='registerPassword'
-          placeholder="password"
+          placeholder="Password"
           secureTextEntry={true}
           value={this.state.password}
           onChange={(e) => {this.setState({password: e.nativeEvent.text})}}
@@ -59,7 +59,7 @@ class Register extends React.Component{
                 });
             }
           }}>
-          <Text style={styles.buttonText}>SIGNUP</Text>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableHighlight>
         <TouchableHighlight
           underlayColor='transparent'
@@ -67,7 +67,7 @@ class Register extends React.Component{
           onPress={() => {
             this.props.switch();
           }}>
-          <Text style={styles.link}>LOGIN</Text>
+          <Text style={styles.link}>Already have an account? Login here</Text>
         </TouchableHighlight>
       </View>
     );
@@ -81,14 +81,13 @@ let styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'stretch',
     justifyContent: 'center',
+    padding: 20
   },
   input: {
     height: 50,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 23,
-    borderWidth: 1,
-    margin: 10,
+    marginBottom: 20,
+    fontSize: 16,
+    padding: 15,
     borderColor: '#b4b4b4',
     borderRadius: 8,
     color: 'black',
@@ -98,12 +97,12 @@ let styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 25,
     padding: 5,
+    marginBottom: 30
   },
   button: {
-    backgroundColor: 'red',
+    backgroundColor: '#E0514B',
     padding: 15,
-    marginLeft: 30,
-    marginRight: 30,
+    marginTop: 15,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: 'white',
@@ -114,10 +113,10 @@ let styles = StyleSheet.create({
     fontSize: 18,
   },
   link: {
-    color: 'blue',
+    color: '#1A263F',
     textAlign: 'center',
     fontSize: 14,
-    marginTop: 10,
+    marginTop: 10, 
   },
   linkContainer: {
 
