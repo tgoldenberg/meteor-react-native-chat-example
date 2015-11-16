@@ -89,7 +89,7 @@ let styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    marginBottom: 20,
+    marginBottom: 12,
     fontSize: 16,
     padding: 15,
     borderColor: '#b4b4b4',
@@ -99,9 +99,11 @@ let styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 24,
+    fontWeight: '300',
+    color: '#1A263F',
     padding: 5,
-    marginBottom: 30
+    marginBottom: 25
   },
   button: {
     backgroundColor: '#E0514B',

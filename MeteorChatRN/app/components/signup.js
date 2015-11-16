@@ -9,6 +9,7 @@ let {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View,
   Navigator,
   ActivityIndicatorIOS,

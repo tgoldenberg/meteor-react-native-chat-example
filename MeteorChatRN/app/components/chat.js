@@ -167,6 +167,8 @@ let styles = StyleSheet.create({
   buttonInactive: {
     flex: .4,
     backgroundColor: "#eeeeee",
+    borderWidth: 1,
+    borderColor: '#ffffff',
     borderRadius: 6,
     justifyContent: 'center',
     margin: 10,
