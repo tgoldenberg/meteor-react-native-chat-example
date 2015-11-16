@@ -44,7 +44,7 @@ class Register extends React.Component{
           onChange={(e) => {this.setState({password: e.nativeEvent.text})}}
           />
         <TouchableHighlight
-          underlayColor='green'
+          underlayColor='#D97573'
           style={styles.button}
           onPress={() => {
             let {username, password} = this.state;

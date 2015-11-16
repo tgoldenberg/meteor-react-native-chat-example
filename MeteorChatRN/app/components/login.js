@@ -45,7 +45,7 @@ class Login extends React.Component{
           onChangeText={(text) => this.setState({password: text})}
           />
         <TouchableHighlight
-          underlayColor='green'
+          underlayColor='#D97573'
           style={styles.button}
           onPress={() => {
             let self = this;
