@@ -14,6 +14,7 @@ var {
   ActionSheetIOS,
   TextInput,
   TouchableHighlight,
+  DeviceEventEmitter,
   ScrollView,
   ActivityIndicatorIOS,
 } = React;
@@ -31,6 +32,7 @@ class Chat extends React.Component{
       messages: [],
       messagesObserver: null,
       newMessage: '',
+      keyboardOffset: 0,
     }
   }
   componentDidMount(){
@@ -51,6 +53,20 @@ class Chat extends React.Component{
       }
     });
   }
+  _keyboardWillShow(e) {
+      var newCoordinates = e.endCoordinates.height;
+      console.log(newCoordinates);
+      this.setState({
+          keyboardOffset: newCoordinates
+      })
+      this.refs.invertible.scrollTo(0);
+  }
+
+  _keyboardWillHide(e) {
+      this.setState({
+          keyboardOffset: 0
+      })
+  }
   componentWillMount(){
     let self = this;
     ddp.subscribe('messages', [])
@@ -68,6 +84,8 @@ class Chat extends React.Component{
           this.refs.invertible.scrollTo(0);
         })
       })
+      _keyboardWillShowSubscription = DeviceEventEmitter.addListener('keyboardWillShow', (e) => this._keyboardWillShow(e));
+      _keyboardWillHideSubscription = DeviceEventEmitter.addListener('keyboardWillHide', (e) => this._keyboardWillHide(e));
   }
   componentWillUnmount() {
    if (this.state.messagesObserver) {
@@ -85,12 +103,12 @@ class Chat extends React.Component{
       }
     };
     return (
-      <View style={{flex: 1,}}>
+      <View style={{flex: 1, paddingBottom: this.state.keyboardOffset}}>
         <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
-        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: .8}}>
+        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: 1}}>
           <MessageBox messages={this.state.messages} />
         </InvertibleScrollView>
-        <View style={{flex: .1, backgroundColor: 'white', flexDirection: 'row'}}>
+        <View style={styles.inputBox}>
           <TextInput
             value={this.state.newMessage}
             placeholder='Say something...'
@@ -98,7 +116,7 @@ class Chat extends React.Component{
             style={styles.input}
             />
           <TouchableHighlight
-            style={styles.button}
+            style={this.state.newMessage ? styles.buttonActive : styles.buttonInactive}
             onPress={() => {
               if (this.state.newMessage != '') {
                 let options = {
@@ -111,7 +129,7 @@ class Chat extends React.Component{
                 ddp.call('messageCreate', [options]);
               }
             }}
-            underlayColor='red'>
+            underlayColor='#D97573'>
             <Text style={styles.buttonText}>Send</Text>
           </TouchableHighlight>
         </View>
@@ -121,22 +139,34 @@ class Chat extends React.Component{
 };
 
 let styles = StyleSheet.create({
+  inputBox: {
+    height: 60,
+    backgroundColor: '#F3EFEF', 
+    flexDirection: 'row'
+  },
   input: {
-    height: 50,
+    height: 40,
     padding: 8,
     flex: 1,
     marginRight: 5,
-    fontSize: 23,
-    borderWidth: 1,
+    fontSize: 12,
+    borderColor: '#E0E0E0',
     margin: 10,
     borderColor: '#b4b4b4',
     borderRadius: 8,
     color: 'black',
     backgroundColor: 'white',
   },
-  button: {
+  buttonActive: {
     flex: .4,
     backgroundColor: "#E0514B",
+    borderRadius: 6,
+    justifyContent: 'center',
+    margin: 10,
+  },
+  buttonInactive: {
+    flex: .4,
+    backgroundColor: "#eeeeee",
     borderRadius: 6,
     justifyContent: 'center',
     margin: 10,

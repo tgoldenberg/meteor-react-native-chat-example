@@ -5,7 +5,8 @@ import _ from 'underscore';
 
 let ddpClient = new DDPClient({
   // All properties optional, defaults shown
-  host : "192.168.1.3",
+  // host : "YOUR_IP_ADDRESS",
+  host : "localhost",
   port : 3000,
   ssl  : false,
   autoReconnect : true,
@@ -154,6 +155,7 @@ ddp.loginWithPassword = function(username, password) {
 
         obj.loggedIn = true;
         obj.userId = res.id;
+        obj.username = username;
 
         resolve(obj);
       } else {
