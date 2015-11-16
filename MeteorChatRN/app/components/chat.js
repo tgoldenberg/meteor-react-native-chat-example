@@ -103,9 +103,15 @@ class Chat extends React.Component{
       }
     };
     return (
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
       <View style={{flex: 1, paddingBottom: this.state.keyboardOffset}}>
         <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
         <InvertibleScrollView inverted={true} ref='invertible' style={{flex: 1}}>
+=======
+      <View style={{flex: 1,}}>
+        <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
+        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: .8}}>
+>>>>>>> Adding styling to chat window
           <MessageBox messages={this.state.messages} />
         </InvertibleScrollView>
         <View style={styles.inputBox}>
@@ -129,7 +135,11 @@ class Chat extends React.Component{
                 ddp.call('messageCreate', [options]);
               }
             }}
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
             underlayColor='#D97573'>
+=======
+            underlayColor='red'>
+>>>>>>> Adding styling to chat window
             <Text style={styles.buttonText}>Send</Text>
           </TouchableHighlight>
         </View>
@@ -145,12 +155,21 @@ let styles = StyleSheet.create({
     flexDirection: 'row'
   },
   input: {
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     height: 40,
     padding: 8,
     flex: 1,
     marginRight: 5,
     fontSize: 12,
     borderColor: '#E0E0E0',
+=======
+    height: 50,
+    padding: 8,
+    flex: 1,
+    marginRight: 5,
+    fontSize: 16,
+    borderWidth: 1,
+>>>>>>> Adding styling to chat window
     margin: 10,
     borderColor: '#b4b4b4',
     borderRadius: 8,
@@ -166,7 +185,11 @@ let styles = StyleSheet.create({
   },
   buttonInactive: {
     flex: .4,
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     backgroundColor: "#eeeeee",
+=======
+    backgroundColor: "#E0514B",
+>>>>>>> Adding styling to chat window
     borderRadius: 6,
     justifyContent: 'center',
     margin: 10,

@@ -59,11 +59,16 @@ let styles = StyleSheet.create({
     height: 40,
     width: 40,
     marginTop: 10,
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     marginLeft: 13
+=======
+    marginLeft: 15
+>>>>>>> Adding styling to chat window
   },
   messageBox: {
     flex: 1,
     alignItems: 'stretch',
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     padding: 10,
   },
   row: {
@@ -95,6 +100,26 @@ let styles = StyleSheet.create({
   messageText: {
     fontSize: 14,
     fontWeight: '300',
+=======
+    padding: 10
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 2
+  },
+  messageView: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingRight: 15
+  },
+  messageText: {
+    fontSize: 14,
+    fontWeight: '300',
+  },
+  author:{
+    fontSize: 12,
+    fontWeight: '700'
+>>>>>>> Adding styling to chat window
   },
   icon: {
     height: 40,
@@ -104,11 +129,16 @@ let styles = StyleSheet.create({
  },
   sent:{
     fontSize: 12,
+<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     fontWeight: '300',
     color: '#9B9B9B',
     marginLeft: 10,
     color: '#9B9B9B',
     fontWeight: '300',
+=======
+    color: '#9B9B9B',
+    fontWeight: '300',
+>>>>>>> Adding styling to chat window
     marginLeft: 10
   }
 })
