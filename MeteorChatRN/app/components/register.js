@@ -9,6 +9,7 @@ let {
   StyleSheet,
   Text,
   TextInput,
+  Image,
   TouchableHighlight,
   View,
   Navigator,
@@ -28,6 +29,13 @@ class Register extends React.Component{
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Welcome to Meteor Chat!</Text>
+<<<<<<< HEAD
+=======
+        <Image
+          style={styles.image}
+          source={require('./meteor-welcome.png')}
+        />
+>>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
         <TextInput
           style={styles.input}
           ref='registerUsername'
@@ -83,9 +91,13 @@ let styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20
   },
+  image: {
+    alignSelf: 'center',
+    marginBottom: 30
+  },
   input: {
     height: 50,
-    marginBottom: 20,
+    marginBottom: 12,
     fontSize: 16,
     padding: 15,
     borderColor: '#b4b4b4',
@@ -95,9 +107,15 @@ let styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 28,
+    fontWeight: '300',
+    color: '#1A263F',
     padding: 5,
+<<<<<<< HEAD
     marginBottom: 30
+=======
+    marginBottom: 10
+>>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
   },
   button: {
     backgroundColor: '#E0514B',
