@@ -103,21 +103,9 @@ class Chat extends React.Component{
       }
     };
     return (
-<<<<<<< HEAD
-<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
       <View style={{flex: 1, paddingBottom: this.state.keyboardOffset}}>
         <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
         <InvertibleScrollView inverted={true} ref='invertible' style={{flex: 1}}>
-=======
-      <View style={{flex: 1,}}>
-        <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
-        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: .8}}>
->>>>>>> Adding styling to chat window
-=======
-      <View style={{flex: 1, paddingBottom: this.state.keyboardOffset}}>
-        <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
-        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: 1}}>
->>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
           <MessageBox messages={this.state.messages} />
         </InvertibleScrollView>
         <View style={styles.inputBox}>
@@ -141,15 +129,7 @@ class Chat extends React.Component{
                 ddp.call('messageCreate', [options]);
               }
             }}
-<<<<<<< HEAD
-<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
             underlayColor='#D97573'>
-=======
-            underlayColor='red'>
->>>>>>> Adding styling to chat window
-=======
-            underlayColor='#D97573'>
->>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
             <Text style={styles.buttonText}>Send</Text>
           </TouchableHighlight>
         </View>
@@ -161,34 +141,16 @@ class Chat extends React.Component{
 let styles = StyleSheet.create({
   inputBox: {
     height: 60,
-    backgroundColor: '#F3EFEF', 
+    backgroundColor: '#F3EFEF',
     flexDirection: 'row'
   },
   input: {
-<<<<<<< HEAD
-<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
     height: 40,
     padding: 8,
     flex: 1,
     marginRight: 5,
     fontSize: 12,
     borderColor: '#E0E0E0',
-=======
-    height: 50,
-    padding: 8,
-    flex: 1,
-    marginRight: 5,
-    fontSize: 16,
-    borderWidth: 1,
->>>>>>> Adding styling to chat window
-=======
-    height: 40,
-    padding: 8,
-    flex: 1,
-    marginRight: 5,
-    fontSize: 12,
-    borderColor: '#E0E0E0',
->>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
     margin: 10,
     borderColor: '#b4b4b4',
     borderRadius: 8,
@@ -196,7 +158,6 @@ let styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   buttonActive: {
-<<<<<<< HEAD
     flex: .4,
     backgroundColor: "#E0514B",
     borderRadius: 6,
@@ -205,12 +166,7 @@ let styles = StyleSheet.create({
   },
   buttonInactive: {
     flex: .4,
-<<<<<<< a3569c0564c59687fa075a828c2421e35034bdc6
-    backgroundColor: "#eeeeee",
-=======
     backgroundColor: "#E0514B",
->>>>>>> Adding styling to chat window
-=======
     flex: .4,
     backgroundColor: "#E0514B",
     borderRadius: 6,
@@ -222,7 +178,6 @@ let styles = StyleSheet.create({
     backgroundColor: "#eeeeee",
     borderWidth: 1,
     borderColor: '#ffffff',
->>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
     borderRadius: 6,
     justifyContent: 'center',
     margin: 10,

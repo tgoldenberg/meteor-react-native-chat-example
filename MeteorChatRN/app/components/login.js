@@ -89,11 +89,7 @@ let styles = StyleSheet.create({
   },
   input: {
     height: 50,
-<<<<<<< HEAD
     marginBottom: 20,
-=======
-    marginBottom: 12,
->>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
     fontSize: 16,
     padding: 15,
     borderColor: '#b4b4b4',
@@ -107,11 +103,7 @@ let styles = StyleSheet.create({
     fontWeight: '300',
     color: '#1A263F',
     padding: 5,
-<<<<<<< HEAD
-    marginBottom: 30
-=======
-    marginBottom: 25
->>>>>>> 575dc9e11f96ef94bc4625e3f93355d2b8061acc
+    marginBottom: 25,
   },
   button: {
     backgroundColor: '#E0514B',
@@ -130,7 +122,7 @@ let styles = StyleSheet.create({
     color: '#1A263F',
     textAlign: 'center',
     fontSize: 14,
-    marginTop: 10, 
+    marginTop: 10,
   },
   linkContainer: {
 
