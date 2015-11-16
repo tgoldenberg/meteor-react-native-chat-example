@@ -64,6 +64,7 @@ class ChatAndroid extends React.Component{
     let titleConfig = { title: 'Meteor Chat', tintColor: 'white' };
     var rightButtonConfig = {
       title: 'Logout',
+      tintColor: '#fff',
       handler: function onNext() {
         ddp.logout();
         self.props.navigator.push({
@@ -73,14 +74,14 @@ class ChatAndroid extends React.Component{
     };
     return (
       <View style={{flex: 1,}}>
-        <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor='black'/>
+        <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
         <InvertibleScrollView inverted={true} ref='invertible' style={{flex: .8}}>
           <MessageBox messages={this.state.messages} />
         </InvertibleScrollView>
         <View style={{flex: .1, backgroundColor: 'white', flexDirection: 'row'}}>
           <TextInput
             value={this.state.newMessage}
-            placeholder='message'
+            placeholder='Say something...'
             onChangeText={(text) => {this.setState({newMessage: text})}}
             style={styles.input}
             />
@@ -99,7 +100,7 @@ class ChatAndroid extends React.Component{
               }
             }}
             underlayColor='red'>
-            <Text style={styles.buttonText}>SEND</Text>
+            <Text style={styles.buttonText}>Send</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -110,10 +111,10 @@ class ChatAndroid extends React.Component{
 let styles = StyleSheet.create({
   input: {
     height: 50,
-    padding: 4,
+    padding: 8,
     flex: 1,
     marginRight: 5,
-    fontSize: 23,
+    fontSize: 16,
     borderWidth: 1,
     margin: 10,
     borderColor: '#b4b4b4',
@@ -123,7 +124,7 @@ let styles = StyleSheet.create({
   },
   button: {
     flex: .4,
-    backgroundColor: 'red',
+    backgroundColor: "#E0514B",
     borderRadius: 6,
     justifyContent: 'center',
     margin: 10,
