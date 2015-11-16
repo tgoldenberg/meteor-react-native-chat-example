@@ -10,6 +10,8 @@ let {
   AppRegistry,
   StyleSheet,
   Text,
+  Animated,
+  Easing,
   Image,
   TextInput,
   TouchableHighlight,
@@ -18,10 +20,32 @@ let {
 } = React;
 
 class Message extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      translateAnim: new Animated.Value(0),
+    }
+  }
+  componentDidMount() {
+     Animated.timing(          // Uses easing functions
+       this.state.translateAnim,    // The value to drive
+       {toValue: 1},           // Configuration
+     ).start();                // Don't forget start!
+  }
   render(){
-    console.log('MSG', this.props.msg);
     return (
-      <View style={{flex: 1,}} >
+      <Animated.View 
+        style={{
+           opacity: 1,
+           transform: [{
+             translateY: this.state.translateAnim.interpolate({
+               inputRange: [0, 1],
+               outputRange: [150, 0]
+             }),
+           }],
+         }}
+      >
         <View style={styles.container}>
           <Image
             style={styles.icon}
@@ -37,7 +61,7 @@ class Message extends React.Component{
             </View>
           </View>
         </View>
-      </View>
+      </Animated.View>
     )
   }
 }
