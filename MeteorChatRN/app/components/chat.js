@@ -14,6 +14,7 @@ var {
   ActionSheetIOS,
   TextInput,
   TouchableHighlight,
+  DeviceEventEmitter,
   ScrollView,
   ActivityIndicatorIOS,
 } = React;
@@ -31,6 +32,7 @@ class Chat extends React.Component{
       messages: [],
       messagesObserver: null,
       newMessage: '',
+      keyboardOffset: 0,
     }
   }
   componentDidMount(){
@@ -51,6 +53,20 @@ class Chat extends React.Component{
       }
     });
   }
+  _keyboardWillShow(e) {
+      var newCoordinates = e.endCoordinates.height;
+      console.log(newCoordinates);
+      this.setState({
+          keyboardOffset: newCoordinates
+      })
+      this.refs.invertible.scrollTo(0);
+  }
+
+  _keyboardWillHide(e) {
+      this.setState({
+          keyboardOffset: 0
+      })
+  }
   componentWillMount(){
     let self = this;
     ddp.subscribe('messages', [])
@@ -68,6 +84,8 @@ class Chat extends React.Component{
           this.refs.invertible.scrollTo(0);
         })
       })
+      _keyboardWillShowSubscription = DeviceEventEmitter.addListener('keyboardWillShow', (e) => this._keyboardWillShow(e));
+      _keyboardWillHideSubscription = DeviceEventEmitter.addListener('keyboardWillHide', (e) => this._keyboardWillHide(e));
   }
   componentWillUnmount() {
    if (this.state.messagesObserver) {
@@ -85,12 +103,12 @@ class Chat extends React.Component{
       }
     };
     return (
-      <View style={{flex: 1,}}>
+      <View style={{flex: 1, paddingBottom: this.state.keyboardOffset}}>
         <NavigationBar title={titleConfig} rightButton={rightButtonConfig} tintColor="#1A263F"/>
-        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: .8}}>
+        <InvertibleScrollView inverted={true} ref='invertible' style={{flex: 1}}>
           <MessageBox messages={this.state.messages} />
         </InvertibleScrollView>
-        <View style={{flex: .1, backgroundColor: 'white', flexDirection: 'row'}}>
+        <View style={styles.inputBox}>
           <TextInput
             value={this.state.newMessage}
             placeholder='Say something...'
@@ -121,12 +139,19 @@ class Chat extends React.Component{
 };
 
 let styles = StyleSheet.create({
+  inputBox: {
+    height: 60,
+    borderTopWidth: 1,
+    borderTopColor: '#9B9B9B',
+    backgroundColor: '#f8f8f8', 
+    flexDirection: 'row'
+  },
   input: {
-    height: 50,
+    height: 40,
     padding: 8,
     flex: 1,
     marginRight: 5,
-    fontSize: 16,
+    fontSize: 12,
     borderWidth: 1,
     margin: 10,
     borderColor: '#b4b4b4',

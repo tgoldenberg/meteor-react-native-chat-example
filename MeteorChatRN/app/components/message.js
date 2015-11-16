@@ -59,7 +59,7 @@ let styles = StyleSheet.create({
     height: 40,
     width: 40,
     marginTop: 10,
-    marginLeft: 15
+    marginLeft: 13
   },
   messageBox: {
     flex: 1,
@@ -85,7 +85,7 @@ let styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginBottom: 2
+    marginBottom: 3
   },
   messageView: {
     backgroundColor: 'white',
