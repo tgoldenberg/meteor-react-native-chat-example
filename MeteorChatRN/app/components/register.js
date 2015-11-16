@@ -11,6 +11,7 @@ let {
   TextInput,
   Image,
   TouchableHighlight,
+  DeviceEventEmitter,
   View,
   Navigator,
   ActivityIndicatorIOS,
@@ -23,11 +24,27 @@ class Register extends React.Component{
     this.state = {
       username: '',
       password: '',
+      keyboardOffset: 0
     }
+  }
+  _keyboardWillShow(e) {
+      var newCoordinates = e.endCoordinates.height;
+      this.setState({
+          keyboardOffset: newCoordinates
+      })
+  }
+  _keyboardWillHide(e) {
+      this.setState({
+          keyboardOffset: 0
+      })
+  }
+  componentDidMount(){
+    _keyboardWillShowSubscription = DeviceEventEmitter.addListener('keyboardWillShow', (e) => this._keyboardWillShow(e));
+    _keyboardWillHideSubscription = DeviceEventEmitter.addListener('keyboardWillHide', (e) => this._keyboardWillHide(e));
   }
   render(){
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {paddingBottom: this.state.keyboardOffset}]}>
         <Text style={styles.title}>Welcome to Meteor Chat!</Text>
         <Image
           style={styles.image}
